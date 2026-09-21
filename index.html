@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vilea | Luxury Fragrances & Signature Scents</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        vilea: {
+                            50: '#F7F5FC',
+                            100: '#EFEBF8',
+                            200: '#DFD5F0',
+                            300: '#C5B3E4',
+                            400: '#A489D3',
+                            500: '#8A69C4',
+                            600: '#7250A7',
+                            700: '#5C3F87',
+                            800: '#4A336C',
+                            900: '#3D2A57',
+                        },
+                        cream: {
+                            DEFAULT: '#FAF8F5',
+                            dark: '#F0EBE1',
+                        },
+                        ivory: '#FFFDF9',
+                        charcoal: '#222222',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAF8F5;
+            color: #222222;
+        }
+        h1, h2, h3, h4, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Custom smooth subtle glassmorphism */
+        .glass-nav {
+            background: rgba(250, 248, 245, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 70% 30%, rgba(223, 213, 240, 0.5) 0%, rgba(255, 253, 249, 0.9) 60%, rgba(247, 245, 252, 1) 100%);
+        }
+        /* Hide scrollbar for clean tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-cream text-charcoal antialiased selection:bg-vilea-200 selection:text-vilea-900">
+
+    <!-- Header / Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-vilea-100 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <span class="font-serif text-2xl sm:text-3xl tracking-widest font-bold text-vilea-800 group-hover:text-vilea-600 transition-colors">VILEA</span>
+                <span class="text-xs uppercase tracking-widest text-vilea-500 font-sans hidden sm:inline-block border-l border-vilea-300 pl-2">Parfums</span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
+                <a href="#story" class="text-charcoal hover:text-vilea-700 transition-colors">Philosophy</a>
+                <a href="#collection" class="text-charcoal hover:text-vilea-700 transition-colors">Collection</a>
+                <a href="#notes" class="text-charcoal hover:text-vilea-700 transition-colors">Olfactory Guide</a>
+                <a href="#reviews" class="text-charcoal hover:text-vilea-700 transition-colors">Reviews</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center space-x-4">
+                <a href="https://wa.me/1234567890?text=Hi%20Vilea,%20I%20would%20like%20to%20inquire%20about%20your%20luxury%20fragrances." target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 bg-vilea-800 hover:bg-vilea-700 text-white px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all shadow-sm hover:shadow-md">
+                    <i class="fab fa-whatsapp text-sm"></i>
+                    <span>WhatsApp Concierge</span>
+                </a>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-vilea-800 p-2 focus:outline-none" aria-label="Toggle Menu">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-cream border-b border-vilea-100 px-6 py-6 space-y-4 shadow-xl">
+            <a href="#story" class="block text-lg font-serif text-charcoal hover:text-vilea-700 mobile-link">Philosophy</a>
+            <a href="#collection" class="block text-lg font-serif text-charcoal hover:text-vilea-700 mobile-link">Collection</a>
+            <a href="#notes" class="block text-lg font-serif text-charcoal hover:text-vilea-700 mobile-link">Olfactory Guide</a>
+            <a href="#reviews" class="block text-lg font-serif text-charcoal hover:text-vilea-700 mobile-link">Reviews</a>
+            <div class="pt-4 border-t border-vilea-100">
+                <a href="https://wa.me/1234567890?text=Hi%20Vilea,%20I%20would%20like%20to%20inquire%20about%20your%20luxury%20fragrances." target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full bg-vilea-800 text-white py-3 rounded-full text-sm font-semibold tracking-wider">
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    <span>Order via WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center hero-gradient pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <!-- Decorative subtle background circles -->
+        <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-vilea-200/30 blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-vilea-300/20 blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <!-- Hero Text Content -->
+            <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                <div class="inline-flex items-center gap-2 bg-vilea-100 text-vilea-800 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase border border-vilea-200">
+                    <span class="w-1.5 h-1.5 rounded-full bg-vilea-600 animate-pulse"></span>
+                    Signature Extrait de Parfum
+                </div>
+                
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif text-charcoal tracking-tight leading-[1.1]">
+                    Elegance in Every <span class="italic font-normal text-vilea-700">Soft Whisper</span>.
+                </h1>
+                
+                <p class="text-base sm:text-lg text-charcoal/80 max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                    Discover Vilea’s modern curation of soft, intimate, and long-lasting everyday luxury scents crafted for the modern woman of grace.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <a href="#collection" class="w-full sm:w-auto bg-vilea-800 hover:bg-vilea-700 text-white px-8 py-4 rounded-full text-sm font-medium tracking-wider transition-all shadow-lg hover:shadow-xl text-center">
+                        Explore Collection
+                    </a>
+                    <a href="https://wa.me/1234567890?text=Hi%20Vilea,%20I%20would%20like%20to%20explore%20and%20order%20signature%20perfumes." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-ivory hover:bg-vilea-50 text-vilea-900 border border-vilea-300 px-8 py-4 rounded-full text-sm font-medium tracking-wider transition-all flex items-center justify-center gap-2 shadow-sm">
+                        <i class="fab fa-whatsapp text-emerald-600 text-lg"></i>
+                        <span>Order via WhatsApp</span>
+                    </a>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="pt-8 border-t border-vilea-200/60 grid grid-cols-3 gap-4 text-center lg:text-left">
+                    <div>
+                        <p class="font-serif text-2xl text-vilea-800 font-bold">12h+</p>
+                        <p class="text-xs text-charcoal/70 uppercase tracking-wider mt-0.5">Longevity</p>
+                    </div>
+                    <div>
+                        <p class="font-serif text-2xl text-vilea-800 font-bold">100%</p>
+                        <p class="text-xs text-charcoal/70 uppercase tracking-wider mt-0.5">Clean Ingredients</p>
+                    </div>
+                    <div>
+                        <p class="font-serif text-2xl text-vilea-800 font-bold">Cruelty-Free</p>
+                        <p class="text-xs text-charcoal/70 uppercase tracking-wider mt-0.5">& Vegan</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Visual / Featured Bottle Card -->
+            <div class="lg:col-span-5 flex justify-center relative">
+                <div class="relative w-full max-w-md bg-white/60 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-vilea-200 shadow-2xl">
+                    <!-- Absolute badge -->
+                    <div class="absolute -top-4 -right-4 bg-vilea-800 text-white text-xs font-semibold px-4 py-1.5 rounded-full shadow-md tracking-wider">
+                        Bestseller
+                    </div>
+                    
+                    <div class="relative h-80 sm:h-96 rounded-2xl bg-gradient-to-b from-vilea-50 to-vilea-100 overflow-hidden flex items-center justify-center p-6 group">
+                        <div class="absolute inset-0 bg-[radial-gradient(#c5b3e4_1px,transparent_1px)] [background-size:16px_16px] opacity-30"></div>
+                        <!-- High-end perfume bottle illustration placeholder with realistic drop shadow -->
+                        <div class="relative z-10 text-center space-y-4">
+                            <div class="w-36 sm:w-44 h-64 sm:h-72 mx-auto bg-gradient-to-tr from-vilea-200/80 via-ivory to-vilea-100 rounded-2xl border border-vilea-300 shadow-xl flex flex-col items-center justify-between p-4 relative group-hover:scale-105 transition-transform duration-500">
+                                <div class="w-10 h-6 bg-vilea-700 rounded-sm mx-auto shadow-sm"></div>
+                                <div class="space-y-1">
+                                    <p class="font-serif text-xs uppercase tracking-widest text-vilea-900 font-bold">VILEA</p>
+                                    <p class="font-serif text-sm tracking-wide text-charcoal italic">Velvet Bloom</p>
+                                    <p class="text-[9px] uppercase tracking-widest text-charcoal/60">Extrait de Parfum</p>
+                                </div>
+                                <div class="text-[10px] text-vilea-800 font-medium tracking-widest">50 ml / 1.7 fl.oz</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex items-center justify-between">
+                        <div>
+                            <h3 class="font-serif text-lg font-bold text-charcoal">Velvet Bloom</h3>
+                            <p class="text-xs text-charcoal/60">Soft Peony, White Musk & Warm Amber</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-xs text-charcoal/50 block">Investment</span>
+                            <span class="font-serif text-lg font-bold text-vilea-800">$85.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Philosophy & Story -->
+    <section id="story" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+            <span class="text-xs uppercase tracking-widest text-vilea-700 font-semibold">Our Philosophy</span>
+            <h2 class="text-3xl sm:text-5xl font-serif text-charcoal">Crafted for the Intimate Moments of Life</h2>
+            <div class="w-12 h-0.5 bg-vilea-400 mx-auto"></div>
+            <p class="text-charcoal/70 text-sm sm:text-base leading-relaxed">
+                Vilea was born from a desire to redefine luxury fragrance—moving away from overpowering scents to create soft, emotive, and skin-melding perfumes that whisper rather than shout.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Pillar 1 -->
+            <div class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl border border-vilea-100 shadow-sm hover:shadow-md transition-all text-center space-y-4">
+                <div class="w-14 h-14 mx-auto rounded-full bg-vilea-100 flex items-center justify-center text-vilea-700 text-xl">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <h3 class="font-serif text-xl font-bold text-charcoal">Premium Ingredients</h3>
+                <p class="text-sm text-charcoal/70 leading-relaxed">
+                    Sourced from sustainable French harvests, our botanical essences blend seamlessly with clean aroma molecules for an exquisite skin feel.
+                </p>
+            </div>
+
+            <!-- Pillar 2 -->
+            <div class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl border border-vilea-100 shadow-sm hover:shadow-md transition-all text-center space-y-4">
+                <div class="w-14 h-14 mx-auto rounded-full bg-vilea-100 flex items-center justify-center text-vilea-700 text-xl">
+                    <i class="fas fa-feather"></i>
+                </div>
+                <h3 class="font-serif text-xl font-bold text-charcoal">Long-Lasting Softness</h3>
+                <p class="text-sm text-charcoal/70 leading-relaxed">
+                    Formulated as high-concentration Extrait de Parfum that lingers on your skin gracefully for over 12 hours without heaviness.
+                </p>
+            </div>
+
+            <!-- Pillar 3 -->
+            <div class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl border border-vilea-100 shadow-sm hover:shadow-md transition-all text-center space-y-4">
+                <div class="w-14 h-14 mx-auto rounded-full bg-vilea-100 flex items-center justify-center text-vilea-700 text-xl">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <h3 class="font-serif text-xl font-bold text-charcoal">Modern Luxury</h3>
+                <p class="text-sm text-charcoal/70 leading-relaxed">
+                    Minimalist apothecary bottles designed to adorn your vanity while remaining eco-conscious and fully recyclable.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Perfume Collection Showcase -->
+    <section id="collection" class="py-24 bg-vilea-50/50 border-y border-vilea-100 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div class="space-y-3">
+                    <span class="text-xs uppercase tracking-widest text-vilea-700 font-semibold">The Signature Line</span>
+                    <h2 class="text-3xl sm:text-5xl font-serif text-charcoal">Explore Our Collection</h2>
+                </div>
+                <p class="text-charcoal/70 text-sm max-w-md mt-4 md:mt-0">
+                    Each fragrance tells a distinct story. Click any piece to inspect its olfactory pyramid or order directly via WhatsApp.
+                </p>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-3xl p-6 border border-vilea-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-72 rounded-2xl bg-gradient-to-b from-vilea-50 to-vilea-100/60 overflow-hidden flex items-center justify-center mb-6">
+                            <span class="absolute top-4 left-4 bg-white/80 backdrop-blur-sm text-vilea-900 text-[10px] uppercase font-semibold px-3 py-1 rounded-full tracking-wider">50ml Extrait</span>
+                            <!-- Bottle Illustration -->
+                            <div class="w-32 h-56 bg-gradient-to-tr from-vilea-200 via-ivory to-vilea-100 rounded-xl border border-vilea-300 shadow-md flex flex-col items-center justify-between p-3 group-hover:scale-105 transition-transform duration-500">
+                                <div class="w-8 h-4 bg-vilea-700 rounded-sm"></div>
+                                <div class="text-center">
+                                    <p class="font-serif text-[10px] tracking-widest font-bold text-vilea-900">VILEA</p>
+                                    <p class="font-serif text-xs text-charcoal italic">Velvet Bloom</p>
+                                </div>
+                                <div class="text-[9px] text-vilea-800 tracking-wider">50 ml</div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-serif text-2xl font-bold text-charcoal">Velvet Bloom</h3>
+                                <span class="font-serif text-xl font-bold text-vilea-800">$85.00</span>
+                            </div>
+                            <p class="text-xs text-vilea-700 font-medium">Romantic, Soft Floral & Powdery</p>
+                            <p class="text-sm text-charcoal/70 line-clamp-2">
+                                An intimate bouquet of morning peony and dewy rose petals wrapped in comforting white musk.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 mt-6 border-t border-vilea-100 flex items-center gap-3">
+                        <button onclick="openNotesModal('Velvet Bloom', 'Soft Peony, Bergamot, Pear', 'Rose, Jasmine Petals', 'White Musk, Vanilla, Cedarwood', '$85.00')" class="flex-1 bg-cream hover:bg-vilea-100 text-charcoal py-3 rounded-xl text-xs font-semibold tracking-wider uppercase transition-colors">
+                            View Notes
+                        </button>
+                        <a href="https://wa.me/1234567890?text=Hi%20Vilea,%20I%20would%20like%20to%20order%20Velvet%20Bloom%20(50ml)%20-%20$85.00" target="_blank" rel="noopener noreferrer" class="flex-1 bg-vilea-800 hover:bg-vilea-700 text-white py-3 rounded-xl text-xs font-semibold tracking-wider uppercase transition-all text-center flex items-center justify-center gap-2">
+                            <i class="fab fa-whatsapp"><span>Order</span></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white rounded-3xl p-6 border border-vilea-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-72 rounded-2xl bg-gradient-to-b from-vilea-50 to-vilea-100/60 overflow-hidden flex items-center justify-center mb-6">
+                            <span class="absolute top-4 left-4 bg-white/80 backdrop-blur-sm text-vilea-900 text-[10px] uppercase font-semibold px-3 py-1 rounded-full tracking-wider">50ml Extrait</span>
+                            <!-- Bottle Illustration -->
+                            <div class="w-32 h-56 bg-gradient-to-tr from-sky-100 via-ivory to-vilea-100 rounded-xl border border-vilea-300 shadow-md flex flex-col items-center justify-between p-3 group-hover:scale-105 transition-transform duration-500">
+                                <div class="w-8 h-4 bg-indigo-700 rounded-sm"></div>
+                                <div class="text-center">
+                                    <p class="font-serif text-[10px] tracking-widest font-bold text-indigo-900">VILEA</p>
+                                    <p class="font-serif text-xs text-charcoal italic">Lune Iris</p>
+                                </div>
+                                <div class="text-[9px] text-indigo-800 tracking-wider">50 ml</div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-serif text-2xl font-bold text-charcoal">Lune Iris</h3>
+                                <span class="font-serif text-xl font-bold text-vilea-800">$92.00</span>
+                            </div>
+                            <p class="text-xs text-vilea-700 font-medium">Ethereal, Powdery & Clean</p>
+                            <p class="text-sm text-charcoal/70 line-clamp-2">
+                                Inspired by moonlit gardens, featuring precious Florentine iris, violet leaf, and soft ambrette seeds.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 mt-6 border-t border-vilea-100 flex items-center gap-3">
+                        <button onclick="openNotesModal('Lune Iris', 'Violet Leaf, Italian Bergamot', 'Florentine Iris, Orris Root', 'Ambrette, White Amber, Cashmeran', '$92.00')" class="flex-1 bg-cream hover:bg-vilea-100 text-charcoal py-3 rounded-xl text-xs font-semibold tracking-wider uppercase transition-colors">
+                            View Notes
+                        </button>
+                        <a href="https://wa.me/1234567890?text=Hi%20Vilea,%20I%20would%20like%20to%20order%20Lune%20Iris%20(50ml)%20-%20$92.00" target="_blank" rel="noopener noreferrer" class="flex-1 bg-vilea-800 hover:bg-vilea-700 text-white py-3 rounded-xl text-xs font-semibold tracking-wider uppercase transition-all text-center flex items-center justify-center gap-2">
+                            <i class="fab fa-whatsapp"><span>Order</span></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white rounded-3xl p-6 border border-vilea-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-72 rounded-2xl bg-gradient-to-b from-vilea-50 to-vilea-100/60 overflow-hidden flex items-center justify-center mb-6">
+                            <span class="absolute top-4 left-4 bg-white/80 backdrop-blur-sm text-vilea-900 text-[10px] uppercase font-semibold px-3 py-1 rounded-full tracking-wider">50ml Extrait</span>
+                            <!-- Bottle Illustration -->
+                            <div class="w-32 h-56 bg-gradient-to-tr from-amber-50 via-ivory to-vilea-100 rounded-xl border border-vilea-300 shadow-md flex flex-col items-center justify-between p-3 group-hover:scale-105 transition-transform duration-500">
+                                <div class="w-8 h-4 bg-amber-700 rounded-sm"></div>
+                                <div class="text-center">
+                                    <p class="font-serif text-[10px] tracking-widest font-bold text-amber-900">VILEA</p>
+                                    <p class="font-serif text-xs text-charcoal italic">Aura Celeste</p>
+                                </div>
+                                <div class="text-[9px] text-amber-800 tracking-wider">50 ml</div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-serif text-2xl font-bold text-charcoal">Aura Celeste</h3>
+                                <span class="font-serif text-xl font-bold text-vilea-800">$89.00</span>
+                            </div>
+                            <p class="text-xs text-vilea-700 font-medium">Luminous, Warm & Sensual</p>
+                            <p class="text-sm text-charcoal/70 line-clamp-2">
+                                A radiant aura of sunlit mandarin, creamy sandalwood, and a whisper of Madagascar vanilla bean.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 mt-6 border-t border-vilea-100 flex items-center gap-3">
+                        <button onclick="openNotesModal('Aura Celeste', 'Sunlit Mandarin, Pink Peppercorn', 'Orange Blossom, Solar Accord', 'Sandalwood, Madagascar Vanilla, Musk', '$89.00')" class="flex-1 bg-cream hover:bg-vilea-100 text-charcoal py-3 rounded-xl text-xs font-semibold tracking-wider uppercase transition-colors">
+                            View Notes
+                        </button>
+                        <a href="https://wa.me/1234567890?text=Hi%20Vilea,%20I%20would%20like%20to%20order%20Aura%20Celeste%20(50ml)%20-%20$89.00" target="_blank" rel="noopener noreferrer" class="flex-1 bg-vilea-800 hover:bg-vilea-700 text-white py-3 rounded-xl text-xs font-semibold tracking-wider uppercase transition-all text-center flex items-center justify-center gap-2">
+                            <i class="fab fa-whatsapp"><span>Order</span></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fragrance Notes & Character Guide -->
+    <section id="notes" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+            <span class="text-xs uppercase tracking-widest text-vilea-700 font-semibold">Olfactory Anatomy</span>
+            <h2 class="text-3xl sm:text-5xl font-serif text-charcoal">The Olfactory Pyramid</h2>
+            <div class="w-12 h-0.5 bg-vilea-400 mx-auto"></div>
+            <p class="text-charcoal/70 text-sm sm:text-base leading-relaxed">
+                Understanding how our fragrances evolve on your skin from the first whisper to the lasting impression.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Top Notes -->
+            <div class="bg-white p-8 rounded-3xl border border-vilea-100 shadow-sm relative overflow-hidden group hover:border-vilea-300 transition-all">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-vilea-50 rounded-bl-full -z-0 transition-transform group-hover:scale-110"></div>
+                <div class="relative z-10 space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-vilea-100 text-vilea-800 flex items-center justify-center font-serif font-bold text-lg">01</div>
+                    <h3 class="font-serif text-2xl font-bold text-charcoal">Top Notes</h3>
+                    <p class="text-xs uppercase tracking-widest text-vilea-700 font-semibold">First Impression (0 - 15 mins)</p>
+                    <p class="text-sm text-charcoal/70 leading-relaxed">
+                        The initial sparkling greeting. Crisp citruses, delicate fruits, and airy notes that capture your attention instantly upon first misting.
+                    </p>
+                    <div class="pt-4 border-t border-vilea-100 flex flex-wrap gap-2">
+                        <span class="bg-vilea-50 text-vilea-800 text-xs px-3 py-1 rounded-full">Bergamot</span>
+                        <span class="bg-vilea-50 text-vilea-800 text-xs px-3 py-1 rounded-full">Pear</span>
+                        <span class="bg-vilea-50 text-vilea-800 text-xs px-3 py-1 rounded-full">Mandarin</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Heart Notes -->
+            <div class="bg-white p-8 rounded-3xl border border-vilea-100 shadow-sm relative overflow-hidden group hover:border-vilea-300 transition-all">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-vilea-100/60 rounded-bl-full -z-0 transition-transform group-hover:scale-110"></div>
+                <div class="relative z-10 space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-vilea-200 text-vilea-900 flex items-center justify-center font-serif font-bold text-lg">02</div>
+                    <h3 class="font-serif text-2xl font-bold text-charcoal">Heart Notes</h3>
+                    <p class="text-xs uppercase tracking-widest text-vilea-700 font-semibold">Core Character (15 mins - 4 hrs)</p>
+                    <p class="text-sm text-charcoal/70 leading-relaxed">
+                        The true soul of the perfume. As the top notes fade, rich florals and soft botanicals emerge to define the personality of the scent.
+                    </p>
+                    <div class="pt-4 border-t border-vilea-100 flex flex-wrap gap-2">
+                        <span class="bg-vilea-50 text-vilea-800 text-xs px-3 py-1 rounded-full">Peony</span>
+                        <span class="bg-vilea-50 text-vilea-800 text-xs px-3 py-1 rounded-full">Iris</span>
+                        <span class="bg-vilea-50 text-vilea-800 text-xs px-3 py-1 rounded-full">Rose Petals</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Base Notes -->
+            <div class="bg-white p-8 rounded-3xl border border-vilea-100 shadow-sm relative overflow-hidden group hover:border-vilea-300 transition-all">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-vilea-50 rounded-bl-full -z-0 transition-transform group-hover:scale-110"></div>
+                <div class="relative z-10 space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-vilea-100 text-vilea-800 flex items-center justify-center font-serif font-bold text-lg">03</div>
+                    <h3 class="font-serif text-2xl font-bold text-charcoal">Base Notes</h3>
+                    <p class="text-xs uppercase tracking-widest text-vilea-700 font-semibold">Lasting Impression (4 - 12+ hrs)</p>
+                    <p class="text-sm text-charcoal/70 leading-relaxed">
+                        Warm, grounding anchors that linger intimately on your skin and clothes, leaving an unforgettable trail of modern elegance.
+                    </p>
+                    <div class="pt-4 border-t border-vilea-100 flex flex-wrap gap-2">
+                        <span class="bg-vilea-50 text-vilea-800 text-xs px-3 py-1 rounded-full">White Musk</span>
+                        <span class="bg-vilea-50 text-vilea-800 text-xs px-3 py-1 rounded-full">Vanilla Bean</span>
+                        <span class="bg-vilea-50 text-vilea-800 text-xs px-3 py-1 rounded-full">Amber</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof & Reviews -->
+    <section id="reviews" class="py-24 bg-vilea-50/50 border-y border-vilea-100 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+                <span class="text-xs uppercase tracking-widest text-vilea-700 font-semibold">Loved by Thousands</span>
+                <h2 class="text-3xl sm:text-5xl font-serif text-charcoal">Words from Our Muses</h2>
+                <div class="w-12 h-0.5 bg-vilea-400 mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-white p-8 rounded-3xl border border-vilea-100 shadow-sm space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex text-amber-400 text-sm gap-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-sm sm:text-base font-serif italic text-charcoal leading-relaxed">
+                            "Velvet Bloom is quite literally perfection in a bottle. It's soft, never gives me a headache, and I still catch whiffs of it on my cashmere sweater 14 hours later!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-vilea-100">
+                        <div class="w-10 h-10 rounded-full bg-vilea-200 flex items-center justify-center font-serif font-bold text-vilea-900">
+                            S.L.
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-charcoal">Sophia Laurent</p>
+                            <p class="text-xs text-charcoal/60">Verified Buyer • Velvet Bloom</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white p-8 rounded-3xl border border-vilea-100 shadow-sm space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex text-amber-400 text-sm gap-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-sm sm:text-base font-serif italic text-charcoal leading-relaxed">
+                            "Lune Iris is ethereal. Ordering via WhatsApp was unbelievably seamless—the concierge answered my questions in minutes and my package arrived beautifully gift-wrapped."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-vilea-100">
+                        <div class="w-10 h-10 rounded-full bg-vilea-200 flex items-center justify-center font-serif font-bold text-vilea-900">
+                            C.M.
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-charcoal">Claire Miller</p>
+                            <p class="text-xs text-charcoal/60">Verified Buyer • Lune Iris</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-white p-8 rounded-3xl border border-vilea-100 shadow-sm space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex text-amber-400 text-sm gap-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-sm sm:text-base font-serif italic text-charcoal leading-relaxed">
+                            "Aura Celeste smells like warm golden hour sunlight. I get stopped constantly in cafes asking what perfume I'm wearing. Absolutely obsessed!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-vilea-100">
+                        <div class="w-10 h-10 rounded-full bg-vilea-200 flex items-center justify-center font-serif font-bold text-vilea-900">
+                            E.V.
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-charcoal">Elena Vance</p>
+                            <p class="text-xs text-charcoal/60">Verified Buyer • Aura Celeste</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/1234567890?text=Hi%20Vilea,%20I%20would%20like%20to%20inquire%20about%20your%20fragrances." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" class="fixed bottom-6 right-6 z-40 bg-emerald-600 hover:bg-emerald-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl transition-transform hover:scale-110">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-charcoal text-cream-dark pt-16 pb-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 pb-12 border-b border-white/10">
+            <!-- Brand Column -->
+            <div class="space-y-4 md:col-span-1">
+                <span class="font-serif text-3xl tracking-widest font-bold text-white">VILEA</span>
+                <p class="text-xs text-cream-dark/70 leading-relaxed">
+                    Modern luxury extrait de parfum formulated for soft elegance and lasting confidence.
+                </p>
+                <div class="flex space-x-4 pt-2">
+                    <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white transition-colors" aria-label="Instagram">
+                        <i class="fab fa-instagram text-sm"></i>
+                    </a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white transition-colors" aria-label="TikTok">
+                        <i class="fab fa-tiktok text-sm"></i>
+                    </a>
+                    <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white transition-colors" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="space-y-4">
+                <h4 class="font-serif text-lg font-bold text-white tracking-wide">Navigation</h4>
+                <ul class="space-y-2 text-sm text-cream-dark/70">
+                    <li><a href="#story" class="hover:text-white transition-colors">Philosophy & Story</a></li>
+                    <li><a href="#collection" class="hover:text-white transition-colors">Perfume Collection</a></li>
+                    <li><a href="#notes" class="hover:text-white transition-colors">Olfactory Guide</a></li>
+                    <li><a href="#reviews" class="hover:text-white transition-colors">Customer Reviews</a></li>
+                </ul>
+            </div>
+
+            <!-- Customer Care -->
+            <div class="space-y-4">
+                <h4 class="font-serif text-lg font-bold text-white tracking-wide">Customer Care</h4>
+                <ul class="space-y-2 text-sm text-cream-dark/70">
+                    <li><a href="https://wa.me/1234567890?text=Hi%20Vilea,%20I%20need%20help%20with%20shipping%20information." target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Shipping & Delivery</a></li>
+                    <li><a href="https://wa.me/1234567890?text=Hi%20Vilea,%20I%20have%20a%20question%20about%20returns." target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Complimentary Returns</a></li>
+                    <li><a href="https://wa.me/1234567890?text=Hi%20Vilea,%20I%20would%20like%20sample%20guidance." target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Sample Discovery</a></li>
+                    <li><a href="https://wa.me/1234567890?text=Hi%20Vilea,%20I%20need%20concierge%20support." target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">WhatsApp Concierge</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter / Direct Order -->
+            <div class="space-y-4">
+                <h4 class="font-serif text-lg font-bold text-white tracking-wide">Direct Ordering</h4>
+                <p class="text-xs text-cream-dark/70 leading-relaxed">
+                    Skip the cart. Connect instantly with our beauty advisors on WhatsApp for personalized recommendations.
+                </p>
+                <a href="https://wa.me/1234567890?text=Hi%20Vilea,%20I%20would%20like%20to%20consult%20with%20a%20fragrance%20advisor." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-vilea-700 hover:bg-vilea-600 text-white px-5 py-3 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all w-full justify-center">
+                    <i class="fab fa-whatsapp text-base"></i>
+                    <span>Chat with Advisor</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-cream-dark/50 gap-4">
+            <p>&copy; 2026 Vilea Parfums. All rights reserved.</p>
+            <div class="flex space-x-6">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notes Modal -->
+    <div id="notes-modal" class="fixed inset-0 z-50 bg-charcoal/60 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl animate-in fade-in zoom-in duration-200">
+            <button onclick="closeNotesModal()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-cream hover:bg-vilea-100 flex items-center justify-center text-charcoal transition-colors" aria-label="Close modal">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="space-y-6">
+                <div>
+                    <span id="modal-subtitle" class="text-xs uppercase tracking-widest text-vilea-700 font-semibold">Olfactory Profile</span>
+                    <h3 id="modal-title" class="font-serif text-3xl font-bold text-charcoal mt-1">Perfume Name</h3>
+                    <p id="modal-price" class="font-serif text-lg font-bold text-vilea-800 mt-1">$0.00</p>
+                </div>
+
+                <div class="space-y-4 pt-2">
+                    <div class="bg-vilea-50/60 p-4 rounded-2xl border border-vilea-100">
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-vilea-700 block mb-1">Top Notes (First Impression)</span>
+                        <p id="modal-top" class="text-sm text-charcoal font-medium">Top notes list</p>
+                    </div>
+
+                    <div class="bg-vilea-50/60 p-4 rounded-2xl border border-vilea-100">
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-vilea-700 block mb-1">Heart Notes (Core Character)</span>
+                        <p id="modal-heart" class="text-sm text-charcoal font-medium">Heart notes list</p>
+                    </div>
+
+                    <div class="bg-vilea-50/60 p-4 rounded-2xl border border-vilea-100">
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-vilea-700 block mb-1">Base Notes (Lasting Impression)</span>
+                        <p id="modal-base" class="text-sm text-charcoal font-medium">Base notes list</p>
+                    </div>
+                </div>
+
+                <div class="pt-4">
+                    <a id="modal-whatsapp-btn" href="#" target="_blank" rel="noopener noreferrer" class="w-full bg-vilea-800 hover:bg-vilea-700 text-white py-4 rounded-xl text-xs font-semibold tracking-wider uppercase transition-all flex items-center justify-center gap-2 shadow-lg">
+                        <i class="fab fa-whatsapp text-lg"></i>
+                        <span>Order Now via WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Notes Modal Functions
+        const notesModal = document.getElementById('notes-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalPrice = document.getElementById('modal-price');
+        const modalTop = document.getElementById('modal-top');
+        const modalHeart = document.getElementById('modal-heart');
+        const modalBase = document.getElementById('modal-base');
+        const modalWhatsappBtn = document.getElementById('modal-whatsapp-btn');
+
+        function openNotesModal(name, top, heart, base, price) {
+            modalTitle.textContent = name;
+            modalPrice.textContent = price;
+            modalTop.textContent = top;
+            modalHeart.textContent = heart;
+            modalBase.textContent = base;
+            
+            const waMessage = encodeURIComponent(`Hi Vilea, I would like to order ${name} (50ml) for ${price}. Please guide me through the checkout.`);
+            modalWhatsappBtn.href = `https://wa.me/1234567890?text=${waMessage}`;
+            
+            notesModal.classList.remove('hidden');
+            notesModal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeNotesModal() {
+            notesModal.classList.add('hidden');
+            notesModal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        notesModal.addEventListener('click', (e) => {
+            if (e.target === notesModal) {
+                closeNotesModal();
+            }
+        });
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeNotesModal();
+            }
+        });
+    </script>
+</body>
+</html>
